@@ -1,0 +1,40 @@
+ex 1
+function verificarAcesso(idade) {
+    if (idade >= 18) {
+        return "Acesso Autorizado";
+    } else {
+        return "Acesso Negado";
+    }
+}
+
+// Exemplos de teste:
+console.log(verificarAcesso(20)); // Retorna: "Acesso Autorizado"
+console.log(verificarAcesso(16)); // Retorna: "Acesso Negado"
+
+ex 2
+function calcularFrete(valorCompra) {
+    if (valorCompra > 150) {
+        return 0; // Frete Grátis
+    } else {
+        return 20; // Frete R$ 20
+    }
+}
+
+// Exemplos de teste:
+console.log(calcularFrete(200)); // Retorna: 0
+console.log(calcularFrete(120)); // Retorna: 20
+
+
+ex3
+function converterNota(nota) {
+    if (nota >= 7) {
+        return "Aprovado";
+    } else {
+        return "Reprovado";
+    }
+}
+
+// Testando a função com diferentes notas no console:
+console.log(converterNota(8.5)); // Retorna: "Aprovado"
+console.log(converterNota(7.0)); // Retorna: "Aprovado"
+console.log(converterNota(5.5)); // Retorna: "Reprovado"

@@ -1,0 +1,89 @@
+<!--1 -->
+let idade = 18;
+if (idade >= 18) {
+    console.log("Acesso liberado.");
+} else {
+    console.log("Acesso negado.");
+}
+
+<!-- 2 -->
+let contador = 1;
+while (contador <= 5) {
+    console.log(contador);
+    contador++;
+}
+
+  <!-- 3 -->
+  let numeros =;
+let soma = 0;
+for (let i = 0; i < numeros.length; i++) {
+    soma += numeros[i];
+}
+console.log("A soma é: ", soma);
+
+<!-- 4 -->
+  let nomeUsuario = " ana silva ";
+nomeUsuario = nomeUsuario.trim().toUpperCase();
+console.log(nomeUsuario); // Exibe "ANA SILVA"
+
+  <!-- 5 -->
+  let lista =;
+let encontrado = false;
+
+for (let i = 0; i < lista.length; i++) {
+    if (lista[i] === 7) {
+        encontrado = true;
+        break; // Interrompe o laço pois já achou
+    }
+}
+
+if (encontrado) {
+    console.log("Encontrado!");
+} else {
+    console.log("Não encontrado!");
+}
+
+
+<!--6 -->
+  const palavras = ["sol", "computador", "lua", "programação"];
+let curtas = [];
+
+for (let i = 0; i < palavras.length; i++) {
+    if (palavras[i].length < 5) {
+        curtas.push(palavras[i]);
+    }
+}
+
+console.log(curtas); // Exibe ['sol', 'lua']
+
+  <!-- 7 -->
+  let texto = "JavaScript";
+let textoInvertido = "";
+let indice = texto.length - 1;
+
+while (indice >= 0) {
+    textoInvertido += texto[indice];
+    indice--;
+}
+
+console.log(textoInvertido); // Exibe "tpircSavaJ"
+
+  <!-- 8 -->
+  const precos = [10.0, 20.0, 30.0];
+
+for (let i = 0; i < precos.length; i++) {
+    precos[i] = precos[i] * 2;
+}
+
+console.log(precos); // Exibe [20, 40, 60]
+
+
+  <!-- 9 -->
+  let senha = "123";
+
+// Ambos os critérios agora precisam ser verdadeiros
+if (senha.length >= 8 && senha.includes("seguro")) {
+    console.log("Senha válida");
+} else {
+    console.log("Senha inválida");
+}

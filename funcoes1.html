@@ -1,0 +1,30 @@
+<!--ex1-->
+
+O Carimbo de Boas-Vindas
+function saudarUsuario(nome) {
+return `Olá, ${nome}! Seja bem-vindo ao sistema.`;
+}
+
+console.log(saudarUsuario("Ana"));
+console.log(saudarUsuario("Carlos"));
+console.log(saudarUsuario("Mariana"));
+
+<!--ex2-->
+A Máquina de Somar
+function somarValores(num1, num2) {
+return num1 + num2;
+}
+
+console.log(somarValores(15, 25)); // Resultado: 40
+
+<!--ex3-->
+Corrigindo o Bug da Fábrica
+function calcularPrecoComDesconto(preco, desconto = 10) {
+let precoFinal = preco - desconto;
+console.log("Preço final: " + precoFinal);
+return precoFinal;
+}
+
+calcularPrecoComDesconto(50); // Preço final: 40
+calcularPrecoComDesconto(80); // Preço final: 70
+calcularPrecoComDesconto(120); // Preço final: 110

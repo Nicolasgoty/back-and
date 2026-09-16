@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signup-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 24px;
+    color: #333333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #0066cc;
+}
+
+.helper-text {
+    display: block;
+    color: #777777;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.validator-list {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.validator-list li {
+    font-size: 13px;
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 20px;
+    transition: color 0.2s;
+}
+
+.validator-list li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+}
+
+.validator-list li.valid {
+    color: #2e7d32;
+}
+
+.validator-list li.valid::before {
+    content: "✓";
+}
+
+.validator-list li.invalid {
+    color: #c62828;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0052a3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+  </style>
+    <div class="signup-container">
+        <h2>Criar Conta</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                <small class="helper-text">O ajudante vai formatar seu e-mail ao sair do campo.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+                
+                <ul class="validator-list">
+                    <li id="req-length" class="invalid">Pelo menos 8 caracteres</li>
+                    <li id="req-uppercase" class="invalid">Pelo menos uma letra maiúscula</li>
+                    <li id="req-number" class="invalid">Pelo menos um número</li>
+                </ul>
+            </div>
+
+            <button type="submit" id="submit-btn" disabled>Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+      // Seleção dos elementos do DOM
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const submitBtn = document.getElementById('submit-btn');
+
+// Elementos da lista de validação da senha
+const reqLength = document.getElementById('req-length');
+const reqUppercase = document.getElementById('req-uppercase');
+const reqNumber = document.getElementById('req-number');
+
+// 1. O Ajudante (Campo de E-mail)
+// O evento 'blur' é disparado quando o usuário termina de digitar e sai do campo
+emailInput.addEventListener('blur', function() {
+    let emailValue = emailInput.value;
+    
+    // Remove espaços inúteis no começo/fim e transforma em minúsculas
+    emailValue = emailValue.trim().toLowerCase();
+    
+    // Atualiza o valor no campo visível
+    emailInput.value = emailValue;
+});
+
+// 2. O Fiscal (Campo de Senha)
+// O evento 'input' valida em tempo real a cada caractere digitado
+passwordInput.addEventListener('input', function() {
+    const passwordValue = passwordInput.value;
+
+    // Regra 1: Pelo menos 8 caracteres
+    const hasMinLength = passwordValue.length >= 8;
+    
+    // Regra 2: Pelo menos uma letra maiúscula
+    const hasUppercase = /[A-Z]/.test(passwordValue);
+    
+    // Regra 3: Pelo menos um número
+    const hasNumber = /[0-9]/.test(passwordValue);
+
+    // Atualiza visualmente a Regra 1
+    if (hasMinLength) {
+        reqLength.classList.remove('invalid');
+        reqLength.classList.add('valid');
+    } else {
+        reqLength.classList.remove('valid');
+        reqLength.classList.add('invalid');
+    }
+
+    // Atualiza visualmente a Regra 2
+    if (hasUppercase) {
+        reqUppercase.classList.remove('invalid');
+        reqUppercase.classList.add('valid');
+    } else {
+        reqUppercase.classList.remove('valid');
+        reqUppercase.classList.add('invalid');
+    }
+
+    // Atualiza visualmente a Regra 3
+    if (hasNumber) {
+        reqNumber.classList.remove('invalid');
+        reqNumber.classList.add('valid');
+    } else {
+        reqNumber.classList.remove('valid');
+        reqNumber.classList.add('invalid');
+    }
+
+    // Habilita ou desabilita o botão de cadastro baseado nas regras do "Fiscal"
+    if (hasMinLength && hasUppercase && hasNumber) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+// 1. Criação da função para substituir o trecho repetido
+function verificarAprovacao(nome, notaA, notaB) {
+    let media = (notaA + notaB) / 2;
+   
+    if (media >= 6) {
+        console.log(nome + " foi aprovado!");
+    } else {
+        console.log(nome + " foi reprovado!");
+    }
+}
+
+// 2. Substituição das repetições pelas chamadas da função
+
+// Dados do João
+let nome1 = "João";
+let nota1 = 8;
+let nota2 = 7;
+verificarAprovacao(nome1, nota1, nota2);
+
+// Dados da Maria
+let nome2 = "Maria";
+let nota3 = 5;
+let nota4 = 4;
+verificarAprovacao(nome2, nota3, nota4);
+
+// Dados do Pedro
+let nome3 = "Pedro";
+let nota5 = 9;
+let nota6 = 8;
+verificarAprovacao(nome3, nota5, nota6);

@@ -1,0 +1,35 @@
+<!-- 1 -->
+function saudarAluno(nome) { // Adicionado o parâmetro 'nome'
+  console.log("Olá, " + nome + "! Seja bem-vindo.");
+}
+
+saudarAluno("Rafael");
+
+<!--2 -->
+function calcularArea(base, altura) {
+  let area = base * altura;
+  return area; // Retorna o valor calculado
+}
+
+// Armazena o retorno da função em uma variável externa
+let areaCalculada = calcularArea(5, 4); 
+console.log("A área calculada é: " + areaCalculada);
+
+<!-- 3 -->
+function exibirPrecoComDesconto(preco, desconto) {
+  let final = preco - discount; // Nota: na imagem está 'desconto'
+  console.log("Preço final: R$ " + final);
+}
+
+let valorDesconto = 10;
+let valorProduto = 50;
+// Passando os argumentos na ordem correta (preço primeiro, depois desconto)
+exibirPrecoComDesconto(valorProduto, valorDesconto); 
+
+
+<!-- 4 -->
+function avisarPlantas() {
+  console.log("Lembre-se de regar as plantas hoje!");
+}
+
+avisarPlantas(); // Adicionado os parênteses para executar a função
